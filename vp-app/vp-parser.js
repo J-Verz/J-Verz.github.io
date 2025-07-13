@@ -187,6 +187,10 @@ function parseTwoDigitVP(vp) {
   // digits x y z
   const digits = Array.isArray(vp) ? vp : stringToArray(vp);
 
+  if(digits.some((digit) => digit > 7)) {
+    throw "Getallen mogen niet groter dan 7 zijn";
+  }
+
   if (!isSortedAscending(digits)) {
     throw "Getallen moeten oplopen";
   }
