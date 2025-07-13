@@ -184,8 +184,8 @@ function parseThreeDigitVP(vp) {
         throw "Bestaat niet";
       }
 
+      let result = [x];
       let i = x;
-      let result = [i];
       while (i != y) {
         i = (i % 7) + 1;
         if (i !== z) {
