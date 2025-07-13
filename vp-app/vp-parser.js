@@ -142,7 +142,11 @@ export default function parse(vp) {
 }
 
 function stringToArray(vp) {
-  return vp.split("").map((digit) => parseInt(digit));
+  let parsedVP = vp.split("").map((digit) => parseInt(digit));
+  if (parsedVP.some(isNaN)) {  
+    throw "Bestaat niet";
+  }
+  return parsedVP;
 }
 
 function parseThreeDigitVP(vp) {
