@@ -23,7 +23,7 @@ form.addEventListener("submit", (event) => {
     errorElement.innerHTML = "";
     parse(vp).forEach(day => {
       let dayElement = document.createElement("li");
-      dayElement.innerText = dayOfWeekNames[day];
+      dayElement.innerText = dayOfWeekNames[day-1];
       resultElement.appendChild(dayElement);
     });
   } catch (e) {
