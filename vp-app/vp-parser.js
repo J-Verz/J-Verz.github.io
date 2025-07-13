@@ -196,13 +196,19 @@ function parseTwoDigitVP(vp) {
     throw "Getallen mogen niet groter dan 7 zijn";
   }
 
-  if (!isSortedAscending(digits)) {
+  if (!isSortedAscending(digits) && digits[0] <= digits[1] + 1) {
     throw "Getallen moeten oplopen";
   }
 
   const [x, y] = digits;
-  let result = [];
-  for (let i = x; i <= y; i++) {
+  let result = [x];
+  let i = x;
+  while (i !== y) {
+    if (i >= 7) {
+      i = 1;
+    } else {
+      i++;
+    }
     result.push(i);
   }
   return result;
