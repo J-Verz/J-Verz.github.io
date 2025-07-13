@@ -143,7 +143,7 @@ export default function parse(vp) {
 
 function stringToArray(vp) {
   let parsedVP = vp.split("").map((digit) => parseInt(digit));
-  if (parsedVP.some(isNaN)) {  
+  if (parsedVP.some(isNaN)) {
     throw "Bestaat niet";
   }
   return parsedVP;
@@ -173,10 +173,17 @@ function parseThreeDigitVP(vp) {
     case isSortedAscending([x, y, z]): // digits are ascending
       // xyz
       // only days x, y and z
+      if ([x, y, z].some((digit) => digit == 0)) {
+        throw "Bestaat niet";
+      }
       return [x, y, z];
     default:
       // xyz
       // days x till y except z
+      if ([x, y, z].some((digit) => digit == 0)) {
+        throw "Bestaat niet";
+      }
+
       let i = x;
       let result = [i];
       while (i != y) {
@@ -196,11 +203,15 @@ function parseThreeDigitVP(vp) {
 function parseTwoDigitVP(vp) {
   const [x, y] = vp;
 
-  if ([x,y].some((digit) => digit > 7)) {
+  if (x == 0) {
+    throw "Bestaat niet";
+  }
+
+  if ([x, y].some((digit) => digit > 7)) {
     throw "Getallen mogen niet groter dan 7 zijn";
   }
 
-  if (!isSortedAscending([x,y]) && x <= y + 1) {
+  if (!isSortedAscending([x, y]) && x <= y + 1) {
     throw "Getallen moeten oplopen";
   }
 
