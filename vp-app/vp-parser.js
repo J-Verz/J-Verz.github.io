@@ -187,11 +187,7 @@ function parseThreeDigitVP(vp) {
       let i = x;
       let result = [i];
       while (i != y) {
-        if (i >= 7) {
-          i = 1;
-        } else {
-          i++;
-        }
+        i = (i % 7) + 1;
         if (i !== z) {
           result.push(i);
         }
@@ -218,11 +214,7 @@ function parseTwoDigitVP(vp) {
   let result = [x];
   let i = x;
   while (i !== y) {
-    if (i >= 7) {
-      i = 1;
-    } else {
-      i++;
-    }
+    i = (i % 7) + 1;
     result.push(i);
   }
   return result;
