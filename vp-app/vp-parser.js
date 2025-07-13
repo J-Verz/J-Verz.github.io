@@ -128,12 +128,12 @@ const threeDigitVPLookup = {
 };
 
 export default function parse(vp) {
-  if(threeDigitVPLookup[vp] !== undefined) {
+  if (threeDigitVPLookup[vp] !== undefined) {
     vp = threeDigitVPLookup[vp];
   }
-  if(vp.length == 3) {
+  if (vp.length == 3) {
     return parseThreeDigitVP(vp);
-  } else if(vp.length == 2) {
+  } else if (vp.length == 2) {
     return parseTwoDigitVP(vp);
   } else {
     throw "Verkeerde lengte";
@@ -145,37 +145,42 @@ function stringToArray(vp) {
 }
 
 function parseThreeDigitVP(vp) {
-  // digits x y z
-  const digits = Array.isArray(vp) ? vp : stringToArray(vp);
+  const [x, y, z] = Array.isArray(vp) ? vp : stringToArray(vp);
 
-  switch(true) {
+  switch (true) {
     // first handle some special cases
-    case digits[1] == 0:
+    case y == 0:
+      // x0z
       // only days x and z
-      return [digits[0], digits[2]];
-    case digits[2] == 8:
-      if (digits[1] !== digits[0] + 1) {
+      return [x, z];
+    case z == 8:
+      // xy8
+      if (y !== x + 1) {
         throw "Getal y moet gelijk zijn aan x+1"
       }
       // only days x, y, x+3 and y+4
-      let days = [digits[0], digits[1], digits[0] + 3, digits[1] + 4];
+      let days = [x, y, x + 3, y + 4];
       return days.map((day) => day > 7 ? day - 7 : day);
-    case digits[2] == 9:
+    case z == 9:
+      // xy9
       // works like two digit VP (I think?)
-      return parseTwoDigitVP(digits.slice(0, 2));
-    case isSortedAscending(digits): // digits are ascending
+      return parseTwoDigitVP([x, y]);
+    case isSortedAscending([x, y, z]): // digits are ascending
+      // xyz
       // only days x, y and z
-      return digits;
+      return [x, y, z];
     default:
-      let i = digits[0];
+      // xyz
+      // days x till y except z
+      let i = x;
       let result = [i];
-      while(i != digits[1]) {
-        if(i >= 7) {
+      while (i != y) {
+        if (i >= 7) {
           i = 1;
         } else {
           i++;
         }
-        if(i !== digits[2]) {
+        if (i !== z) {
           result.push(i);
         }
       }
@@ -187,7 +192,7 @@ function parseTwoDigitVP(vp) {
   // digits x y z
   const digits = Array.isArray(vp) ? vp : stringToArray(vp);
 
-  if(digits.some((digit) => digit > 7)) {
+  if (digits.some((digit) => digit > 7)) {
     throw "Getallen mogen niet groter dan 7 zijn";
   }
 
@@ -195,8 +200,9 @@ function parseTwoDigitVP(vp) {
     throw "Getallen moeten oplopen";
   }
 
+  const [x, y] = digits;
   let result = [];
-  for(let i = digits[0]; i <= digits[1]; i++) {
+  for (let i = x; i <= y; i++) {
     result.push(i);
   }
   return result;
