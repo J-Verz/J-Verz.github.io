@@ -1,0 +1,13 @@
+:root {
+  font-family: Helvetica, sans-serif;
+}
+
+.content {
+  /* border: 1px solid red; */
+  margin-inline: auto;
+  max-width: 50%;
+
+  h1 {
+    text-align: center;
+  }
+}
