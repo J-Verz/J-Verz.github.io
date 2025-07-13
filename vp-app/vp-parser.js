@@ -131,6 +131,7 @@ export default function parse(vp) {
   if (threeDigitVPLookup[vp] !== undefined) {
     vp = threeDigitVPLookup[vp];
   }
+  vp = stringToArray(vp);
   if (vp.length == 3) {
     return parseThreeDigitVP(vp);
   } else if (vp.length == 2) {
@@ -145,7 +146,7 @@ function stringToArray(vp) {
 }
 
 function parseThreeDigitVP(vp) {
-  const [x, y, z] = Array.isArray(vp) ? vp : stringToArray(vp);
+  const [x, y, z] = vp;
 
   switch (true) {
     // first handle some special cases
@@ -189,18 +190,16 @@ function parseThreeDigitVP(vp) {
 }
 
 function parseTwoDigitVP(vp) {
-  // digits x y z
-  const digits = Array.isArray(vp) ? vp : stringToArray(vp);
+  const [x, y] = vp;
 
-  if (digits.some((digit) => digit > 7)) {
+  if ([x,y].some((digit) => digit > 7)) {
     throw "Getallen mogen niet groter dan 7 zijn";
   }
 
-  if (!isSortedAscending(digits) && digits[0] <= digits[1] + 1) {
+  if (!isSortedAscending([x,y]) && x <= y + 1) {
     throw "Getallen moeten oplopen";
   }
 
-  const [x, y] = digits;
   let result = [x];
   let i = x;
   while (i !== y) {
