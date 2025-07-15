@@ -19,8 +19,6 @@ reader.pages.slice(PAGES_OF_INTEREST).each do |page|
   end
 end
 
-binding.irb
-
 output_path = File.join(__dir__, "../../assets/vp-map.json")
 File.open(output_path, "w") do |file|
   file.write vp_mapping.to_json
