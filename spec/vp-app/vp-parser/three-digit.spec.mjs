@@ -17,13 +17,13 @@ const invalidVPsToTest = [
 
 describe("VP Parser - Three digits", () => {
   validVPsToTest.forEach((_case) => {
-    it(`can parse ${_case.vp}`, () => {
+    it(`parses '${_case.vp}' correctly`, () => {
       expect(parse(_case.vp)).toEqual(_case.expectedResult);
     });
   });
 
   invalidVPsToTest.forEach((_case) => {
-    it(`can parse ${_case.vp}`, () => {
+    it(`throws an error for '${_case.vp}'`, () => {
       expect(() => parse(_case.vp)).toThrow(_case.expectedError);
     });
   });
