@@ -160,7 +160,7 @@ function parseThreeDigitVP(vp) {
       return [x, z];
     case z == 8:
       // xy8
-      if (y !== x + 1) {
+      if (y !== (x % 7) + 1) {
         throw "Getal y moet gelijk zijn aan x+1"
       }
       // only days x, y, x+3 and y+4

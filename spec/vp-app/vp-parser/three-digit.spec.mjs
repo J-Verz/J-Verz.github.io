@@ -3,6 +3,7 @@ import parse from "../../../vp-app/vp-parser.mjs"
 const validVPsToTest = [
   { "vp": "135", "expectedResult": [1, 3, 5] },
   { "vp": "128", "expectedResult": [1, 2, 4, 6] },
+  { "vp": "718", "expectedResult": [7, 1, 3, 5] },
   { "vp": "162", "expectedResult": [1, 3, 4, 5, 6] },
   { "vp": "169", "expectedResult": [1, 2, 3, 4, 5, 6] },
   { "vp": "107", "expectedResult": [1, 7] },
