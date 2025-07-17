@@ -1,4 +1,4 @@
-import parse from "./vp-parser.js";
+import parse from "./vp-parser.mjs";
 
 const form = document.getElementById("vp-search-form");
 const inputElement = document.getElementById("vp");
