@@ -7,7 +7,7 @@ const validVPsToTest = [
 ];
 
 const invalidVPsToTest = [
-  { "vp": "168", "expectedResult": "Getal y moet gelijk zijn aan x+1" },
+  { "vp": "168", "expectedError": "Getal y moet gelijk zijn aan x+1" },
 ];
 
 describe("VP Parser - Three digits", () => {
@@ -19,7 +19,7 @@ describe("VP Parser - Three digits", () => {
 
   invalidVPsToTest.forEach((_case) => {
     it(`can parse ${_case.vp}`, () => {
-      expect(() => parse(_case.vp)).toThrow(_case.expectedResult);
+      expect(() => parse(_case.vp)).toThrow(_case.expectedError);
     });
   });
 }); 

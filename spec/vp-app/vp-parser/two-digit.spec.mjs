@@ -8,7 +8,7 @@ const validVPsToTest = [
 ];
 
 const invalidVPsToTest = [
-  { "vp": "18", "expectedResult": "Getallen mogen niet groter dan 7 zijn" },
+  { "vp": "18", "expectedError": "Getallen mogen niet groter dan 7 zijn" },
 ];
 
 describe("VP Parser - Two digits", () => {
@@ -20,7 +20,7 @@ describe("VP Parser - Two digits", () => {
 
   invalidVPsToTest.forEach((_case) => {
     it(`throws an error for '${_case.vp}'`, () => {
-      expect(() => parse(_case.vp)).toThrow(_case.expectedResult);
+      expect(() => parse(_case.vp)).toThrow(_case.expectedError);
     });
   });
 });
