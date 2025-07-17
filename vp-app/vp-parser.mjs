@@ -152,6 +152,14 @@ function stringToArray(vp) {
 function parseThreeDigitVP(vp) {
   const [x, y, z] = vp;
 
+  if (x == y && y == z) {
+    throw "Bestaat niet";
+  }
+
+  if ([x, y].some((digit) => digit > 7)) {
+    throw "Getallen mogen niet groter dan 7 zijn";
+  }
+
   switch (true) {
     // first handle some special cases
     case y == 0:
@@ -173,7 +181,10 @@ function parseThreeDigitVP(vp) {
     case isSortedAscending([x, y, z]): // digits are ascending
       // xyz
       // only days x, y and z
-      if ([x, y, z].some((digit) => digit == 0)) {
+      if (
+        [x, y, z].some((digit) => digit == 0) ||
+        x == y || x == z || y == z
+      ) {
         throw "Bestaat niet";
       }
       return [x, y, z];
