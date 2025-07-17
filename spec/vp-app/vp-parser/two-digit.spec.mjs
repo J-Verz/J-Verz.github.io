@@ -13,6 +13,7 @@ const invalidVPsToTest = [
   { "vp": "18", "expectedError": "Getallen mogen niet groter dan 7 zijn" },
   { "vp": "91", "expectedError": "Getallen mogen niet groter dan 7 zijn" },
   { "vp": "65", "expectedError": "Getallen moeten oplopen" },
+  { "vp": "05", "expectedError": "Bestaat niet" },
 ];
 
 describe("VP Parser - Two digits", () => {

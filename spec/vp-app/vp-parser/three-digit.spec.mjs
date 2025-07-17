@@ -13,6 +13,7 @@ const validVPsToTest = [
 
 const invalidVPsToTest = [
   { "vp": "168", "expectedError": "Getal y moet gelijk zijn aan x+1" },
+  { "vp": "170", "expectedError": "Bestaat niet" },
 ];
 
 describe("VP Parser - Three digits", () => {
