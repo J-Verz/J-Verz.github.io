@@ -4,6 +4,10 @@ const validVPsToTest = [
   { "vp": "135", "expectedResult": [1, 3, 5] },
   { "vp": "128", "expectedResult": [1, 2, 4, 6] },
   { "vp": "162", "expectedResult": [1, 3, 4, 5, 6] },
+  { "vp": "169", "expectedResult": [1, 2, 3, 4, 5, 6] },
+  { "vp": "107", "expectedResult": [1, 7] },
+  { "vp": "526", "expectedResult": [5, 7, 1, 2] },
+  { "vp": "216", "expectedResult": [2, 3, 4, 5, 7, 1] }
 ];
 
 const invalidVPsToTest = [
