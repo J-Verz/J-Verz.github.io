@@ -7,8 +7,9 @@ const validVPsToTest = [
   { "vp": "162", "expectedResult": [1, 3, 4, 5, 6] },
   { "vp": "169", "expectedResult": [1, 2, 3, 4, 5, 6] },
   { "vp": "107", "expectedResult": [1, 7] },
-  { "vp": "526", "expectedResult": [5, 7, 1, 2] },
-  { "vp": "216", "expectedResult": [2, 3, 4, 5, 7, 1] },
+  { "vp": "176", "expectedResult": [1, 2, 3, 4, 5, 7] },
+  { "vp": "742", "expectedResult": [7, 1, 3, 4] },
+  { "vp": "476", "expectedResult": [4, 5, 7] },
 ];
 
 const invalidVPsToTest = [
@@ -18,7 +19,13 @@ const invalidVPsToTest = [
   { "vp": "111", "expectedError": "Bestaat niet" },
   { "vp": "112", "expectedError": "Bestaat niet" },
   { "vp": "999", "expectedError": "Bestaat niet" },
+  { "vp": "216", "expectedError": "Bestaat niet" },
+  { "vp": "453", "expectedError": "Bestaat niet" },
+  { "vp": "714", "expectedError": "Bestaat niet" },
+  { "vp": "472", "expectedError": "Bestaat niet" },
   { "vp": "956", "expectedError": "Getallen mogen niet groter dan 7 zijn" },
+  { "vp": "9", "expectedError": "Verkeerde lengte" },
+  { "vp": "9999", "expectedError": "Verkeerde lengte" },
 ];
 
 describe("VP Parser - Three digits", () => {

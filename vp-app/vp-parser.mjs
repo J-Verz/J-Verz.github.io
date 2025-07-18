@@ -191,7 +191,10 @@ function parseThreeDigitVP(vp) {
     default:
       // xyz
       // days x till y except z
-      if ([x, y, z].some((digit) => digit == 0)) {
+      if (
+        [x, y, z].some((digit) => digit == 0) ||
+        (z < (x % 7) || z > y) // e.g. 251
+      ) {
         throw "Bestaat niet";
       }
 
