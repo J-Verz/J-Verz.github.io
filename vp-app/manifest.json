@@ -8,5 +8,5 @@
       "sizes": "512x512"
     }
   ],
-  "display": "browser"
+  "display": "standalone"
 }
