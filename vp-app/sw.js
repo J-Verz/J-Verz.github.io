@@ -1,8 +1,9 @@
-const VERSION = "0.1.2";
+const VERSION = "0.1.3";
 const CACHE_NAME = `vp-lookup-${VERSION}`;
 
+const ROOT = "/vp-app/";
 const APP_STATIC_RESOURCES = [
-  "/vp-app/",
+  ROOT,
   "/vp-app/index.html",
   "/vp-app/main.mjs",
   "/vp-app/vp-parser.mjs",
@@ -44,21 +45,21 @@ self.addEventListener("fetch", (event) => {
   // when seeking an HTML page
   if (event.request.mode === "navigate") {
     // Return to the index.html page
-    event.respondWith(caches.match("/"));
+    event.respondWith(caches.match(ROOT));
     return;
   }
 
   // For every other request type
-  // event.respondWith(
-  //   (async () => {
-  //     const cache = await caches.open(CACHE_NAME);
-  //     const cachedResponse = await cache.match(event.request.url);
-  //     if (cachedResponse) {
-  //       // Return the cached response if it's available.
-  //       return cachedResponse;
-  //     }
-  //     // Respond with a HTTP 404 response status.
-  //     return new Response(null, { status: 404 });
-  //   })(),
-  // );
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(event.request.url);
+      if (cachedResponse) {
+        // Return the cached response if it's available.
+        return cachedResponse;
+      }
+      // Respond with a HTTP 404 response status.
+      return new Response(null, { status: 404 });
+    })(),
+  );
 });
