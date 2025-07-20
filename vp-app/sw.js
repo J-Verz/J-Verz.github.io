@@ -1,4 +1,4 @@
-const VERSION = "0.1.3";
+const VERSION = "0.1.4";
 const CACHE_NAME = `vp-lookup-${VERSION}`;
 
 const ROOT = "/vp-app/";
@@ -8,6 +8,7 @@ const APP_STATIC_RESOURCES = [
   "/vp-app/main.mjs",
   "/vp-app/vp-parser.mjs",
   "/vp-app/pwa-sw.js",
+  "/vp-app/manifest.json",
   "/assets/style.css",
   "/assets/icons/vp-icon-512.png"
 ];
