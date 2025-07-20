@@ -1,0 +1,12 @@
+{
+  "short_name": "VP Lookup",
+  "description": "Small app that allows you to look up the 'Verkehrsperiode' (VP) of a Swiss train",
+  "start_url": "/vp-app",
+  "icons": [
+    {
+      "src": "/assets/icons/vp-icon-512.png",
+      "sizes": "512x512"
+    }
+  ],
+  "display": "standalone"
+}
