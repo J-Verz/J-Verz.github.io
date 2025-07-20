@@ -1,4 +1,4 @@
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const CACHE_NAME = `vp-lookup-${VERSION}`;
 
 const APP_STATIC_RESOURCES = [
@@ -48,16 +48,16 @@ self.addEventListener("fetch", (event) => {
   }
 
   // For every other request type
-  event.respondWith(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cachedResponse = await cache.match(event.request.url);
-      if (cachedResponse) {
-        // Return the cached response if it's available.
-        return cachedResponse;
-      }
-      // Respond with a HTTP 404 response status.
-      return new Response(null, { status: 404 });
-    })(),
-  );
+  // event.respondWith(
+  //   (async () => {
+  //     const cache = await caches.open(CACHE_NAME);
+  //     const cachedResponse = await cache.match(event.request.url);
+  //     if (cachedResponse) {
+  //       // Return the cached response if it's available.
+  //       return cachedResponse;
+  //     }
+  //     // Respond with a HTTP 404 response status.
+  //     return new Response(null, { status: 404 });
+  //   })(),
+  // );
 });
